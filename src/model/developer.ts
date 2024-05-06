@@ -3,11 +3,11 @@ import { Document, Schema, model, Types } from "mongoose";
 interface IDeveloper extends Document {
   userId: Types.ObjectId;
   logo: string;
-  book_now_link: string;
-  agent_link: string;
+  // book_now_link: string;
+  // agent_link: string;
 }
 
-const roleSchema = new Schema<IDeveloper>(
+const developerSchema = new Schema<IDeveloper>(
   {
     userId: {
       type: Schema.Types.ObjectId,
@@ -15,18 +15,15 @@ const roleSchema = new Schema<IDeveloper>(
       ref: "users",
     },
     logo: String,
-    book_now_link: String,
-    agent_link: String,
   },
   { timestamps: true }
 );
 
 type developerDataType = {
-  name: string;
-  isActive: boolean;
-  isDeleted: boolean;
+  userId: string;
+  logo: string;
 };
 
-const RoleModel = model<IDeveloper>("developer", roleSchema);
+const DeveloperModel = model<IDeveloper>("developer", developerSchema);
 
-export { RoleModel, IDeveloper, developerDataType };
+export { DeveloperModel, IDeveloper, developerDataType };

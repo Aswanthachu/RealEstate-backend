@@ -148,6 +148,58 @@
 					}
 				]
 			}
+		},
+		"/api/developer/create-developer": {
+			"post": {
+				"operationId": "CreateDeveloper",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"data": {
+									"additionalProperties": true
+								}
+							},
+							"type": "object"
+						},
+						"examples": {
+							"application/json": {
+								"name": "Developer 1",
+								"email": "example@gmail.com",
+								"password": "Example@123",
+								"phone": "8589949567",
+								"avatar": "https://i.pravatar.cc/300",
+								"logo": "https://i.pravatar.cc/800",
+								"userType": "developer"
+							}
+						}
+					}
+				},
+				"consumes": [
+					"application/json"
+				],
+				"tags": [
+					"Developer"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "formData",
+						"required": true,
+						"schema": {
+							"type": "object"
+						}
+					}
+				]
+			}
 		}
 	},
 	"produces": [

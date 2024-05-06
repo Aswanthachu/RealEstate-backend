@@ -1,7 +1,9 @@
-import { userDataType } from '../../model/user'
+import { developerCreateType } from "../../request/request";
 
-interface IAuthRepo {
-  login(data: { email: string; password: string }): Promise<[userDataType | null, string | null, Error | null, number]>
+interface IDeveloperRepo {
+  createDeveloper(
+    formData: developerCreateType
+  ): Promise<[boolean, Error | null, number]>;
 }
 
-export default IAuthRepo
+export default IDeveloperRepo;

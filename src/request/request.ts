@@ -32,7 +32,30 @@ const userPostSchema: JSONSchemaType<userCreateType> = {
   additionalProperties: false,
 };
 
+export type developerCreateType = {
+  name: string;
+  email: string;
+  password: string;
+  phone?: string;
+  avatar?: string;
+  logo?: string;
+  userType: "customer" | "staff" | "developer";
+};
 
+const developerPostSchema: JSONSchemaType<developerCreateType> = {
+  type: "object",
+  properties: {
+    name: { type: "string", minLength: 1 },
+    email: { type: "string", minLength: 1 },
+    password: { type: "string", minLength: 1 },
+    phone: { type: "string", minLength: 8, nullable: true },
+    avatar: { type: "string", minLength: 1, nullable: true },
+    logo: { type: "string", minLength: 1, nullable: true },
+    userType: { type: "string", enum: ["customer", "staff", "developer"] },
+  },
+  required: ["name", "email", "password","userType"],
+  additionalProperties: false,
+};
 
 const userGetSchema: JSONSchemaType<{ id: string }> = {
   type: "object",
@@ -186,6 +209,7 @@ const roleDeleteSchema: JSONSchemaType<{ id: string }> = {
 export {
   authPostSchema,
   userPostSchema,
+  developerPostSchema,
   userGetSchema,
   userDeleteSchema,
   userStatusPutSchema,
